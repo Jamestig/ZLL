@@ -4,32 +4,137 @@
 	box-sizing: border-box;
 }
 
+html {
+	background-color: black;
+}
+
+html,
+body,
 section,
-figure {
+figure,
+img,
+ul,
+li {
 	margin: 0;
-}
-
-a {
-	text-decoration: none;
-	cursor: pointer;
-}
-
-ul {
 	padding: 0;
-	margin: 0;
 }
 
 li {
 	list-style-type: none;
 }
 
-
-img {
-	vertical-align: middle;
+a {
+	text-decoration: none;
+	cursor: pointer;
+	color: white;
 }
 
-textarea {
-	resize: vertical;
+/*// VARIABLES //*/
+
+:root {
+	--background-light: #f6f6f6;
+	--background-dark: #ececec;
+	--font-main: #666666;
+	--font-grey: #828282;
+	--font-light: #eaeaea;
+	--font-white: white;
+	--brand-red: #bf3e3c;
+	--brand-purple: #6e4b74;
+	--brand-grey: #424242;
+	--tag-blue: blue;
+	--tag-green: green;
+	--tag-orange: orange;
+	--tag-grey: lightgrey;
+}
+
+/*// GLOBAL TYPOGRAPHY //*/
+
+html {
+	font-size: 16px;
+}
+
+@media screen and (max-width: 330px) {
+	html {
+		font-size: 14px;
+	}
+}
+
+p {
+	color: white;
+	font-size: 2em;
+}
+
+/*// Font styling //*/
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	text-transform: uppercase;
+	letter-spacing: .05em;
+	color: white;
+}
+
+/*// SCROLL SNAP //*/
+
+body {
+	scroll-snap-type: y mandatory;
+	overflow-y: auto;
+	overflow-x: hidden;
+	scroll-padding-top: 200px;
+}
+
+/*// HEADER //*/
+
+.header {
+	height: 200px;
+	position: fixed;
+	z-index: 10;
+	background-color: rgba(0, 0, 0, .9);
+	top: 0;
+	width: 100%;
+	display: flex;
+	flex-flow: column;
+
+	&_title {
+		h1 {
+			font-weight: bold;
+			padding-left: 5vw;
+
+			a {
+				color: rgba(255, 255, 255, 0.5);
+				font-size: 1.4em;
+			}
+		}
+	}
+
+	&_nav {
+		display: flex;
+		flex-flow: row;
+		justify-content: space-around;
+		align-items: center;
+		height: 100%;
+
+		ul {
+			display: flex;
+			flex-flow: row;
+
+			li {
+				a {
+					color: rgba(255, 255, 255, 0.5);
+					font-size: 1.5em;
+					padding: 1em;
+					font-weight: bold;
+				}
+			}
+		}
+	}
+}
+
+main {
+	margin-top: 200px;
 }
 
 /*// BLOCKS //*/
@@ -37,6 +142,27 @@ textarea {
 .frame {
 	transition: opacity 2s ease-in-out;
 	scroll-snap-align: start;
+	height: calc(50vh - 100px);
+	position: relative;
+}
+
+
+/*// ELEMENTS //*/
+
+.frame_container {
+	display: flex;
+	flex-flow: column;
+	justify-content: flex-end;
+	height: 100%;
+}
+
+.frame_content {
+	background-color: rgba(0, 0, 0, 0.5);
+}
+
+.frame_content h2,
+.frame_content p {
+	padding: 0 15vw 0 5vw;
 }
 
 /*// MODIFIERS //*/
@@ -47,18 +173,8 @@ textarea {
 	border-style: none;
 	height: 2px;
 	z-index: 15;
-}
-
-.hr-left {
-	margin-left: -6%;
 	background-color: white;
 }
-
-.hr-right {
-	right: -12%;
-	background-color: black;
-}
-
 
 .hidden {
 	display: none !important;
@@ -80,149 +196,156 @@ textarea {
 	visibility: hidden;
 }
 
-/*// HEADER //*/
+/*// BACKGROUNDS //*/
 
-main {
-	margin-top: 150px;
+.bg-01 {
+	background: url(../img/mobile/cyberpunk.jpg);
 }
 
-header {
-	position: fixed;
-	height: 150px;
-	background-color: grey;
-	width: 100%;
-	top: 0;
-	z-index: 100;
+.bg-02 {
+	background: url(../img/mobile/hl2.jpg);
 }
 
-header h1 {
-	padding-left: 4%;
-	color: white;
+.bg-03 {
+	background: url(../img/mobile/warframe.jpg);
 }
 
-/*// SCROLL SNAP //*/
-
-body {
-	scroll-snap-type: y mandatory;
-	overflow-y: auto;
-	overflow-x: hidden;
-	scroll-padding-top: 150px;
+.bg-04 {
+	background: url(../img/mobile/ori.jpg);
 }
 
-/*// PARALLAX //*/
-
-body,
-html {
-	height: 100%;
-	min-height: 100%;
-	background-color: #000000;
+.bg-05 {
+	background: url(../img/mobile/dark.jpg);
 }
 
-.loading {
-	background: url('../img/ico_loading.gif') no-repeat center center;
+.bg-06 {
+	background: url(../img/mobile/twilight.jpg);
 }
 
-.loaded section,
-.no-js section {
-	opacity: 1;
-	-webkit-transition: opacity 1s ease-out;
-	-moz-transition: opacity 1s ease-out;
-	transition: opacity 1s ease-out;
+@media screen and (orientation: landscape) {
+
+	body {
+		scroll-padding-top: 99px;
+	}
+
+	main {
+		margin-top: 100px;
+	}
+
+	/*// HEADER //*/
+
+	.header {
+		height: 100px;
+		background-color: rgba(0, 0, 0, 0.9);
+		&_title {
+			h1 {
+				margin: 0;
+				a {
+					font-size: .8em;
+				}
+			}
+		}
+
+		&_nav {
+			display: flex;
+			flex-flow: row;
+			justify-content: space-between;
+			height: 100%;
+			&-site {
+				margin-left: 5vw;
+			}
+
+			ul {
+				display: flex;
+				flex-flow: row;
+
+				li {
+					a {
+						font-size: 1.2em;
+						padding: .8em;
+						font-weight: bold;
+					}
+				}
+			}
+		}
+	}
+
+
+	h2 {
+		font-size: 1.5em;
+	}
+
+	p {
+		font-size: 1em;
+	}
+
+	/*// BLOCKS //*/
+
+	.frame {
+		height: calc(100vh - 100px);
+		background-size: cover !important;
+	}
+
+	.frame_container {
+		width: 40%;
+	}
+
+	.frame_content {
+		height: 100%;
+		display: flex;
+		flex-flow: column;
+		justify-content: flex-end;
+	}
+
+	/*// ELEMENTS //*/
+
+	.bg-01 {
+		background: url(../img/full/cyberpunk.jpg);
+
+		.frame_content {
+			clip-path: polygon(0% 0%, 80% 0%, 85% 100%, 0% 100%);
+		}
+	}
+
+	.bg-02 {
+		background: url(../img/full/hl2.jpg);
+
+		.frame_content {
+			clip-path: polygon(0% 0%, 85% 0%, 90% 100%, 0% 100%);
+		}
+	}
+
+	.bg-03 {
+		background: url(../img/full/warframe.jpg);
+
+		.frame_content {
+			clip-path: polygon(0% 0%, 90% 0%, 95% 100%, 0% 100%);
+		}
+	}
+
+	.bg-04 {
+		background: url(../img/full/ori.jpg);
+
+		.frame_content {
+			clip-path: polygon(0% 0%, 95% 0%, 100% 100%, 0% 100%);
+		}
+	}
+
+	.bg-05 {
+		background: url(../img/full/dark.jpg);
+	}
+
+	.bg-06 {
+		background: url(../img/full/twilight.jpg);
+	}
 }
 
-#preload {
-	width: 1px;
-	height: 1px;
-	overflow: hidden;
-	position: absolute;
-	top: 0;
-	left: 0;
-}
+@media screen and (min-width: 1024px) and (orientation: landscape) {
+	.frame {
+		height: 70vh;
+	}
 
-.bcg {
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-attachment: fixed;
-	background-size: cover;
-	height: 100%;
-	width: 100%;
-}
-
-.hsContainer {
-	width: 100%;
-	height: 100%;
-	overflow: hidden;
-	position: relative;
-}
-
-.hsContent {
-	width: 100%;
-	height: 100%;
-	position: absolute;
-	top: 0;
-	color: white;
-	background-color: rgba(0, 0, 0, 0.5);
-	padding: 2% 8% 0 4%;
-}
-
-.hsContent h2 {
-	font-size: 2.5em;
-}
-
-.hsContent p {
-	font-size: 1.5em;
-}
-
-/*// FEATURED FRAMES //*/
-
-/* frame 1 */
-#frame-1 .bcg {
-	background-image: url('../img/placeholder/cyberpunk.jpg')
-}
-
-#frame-1 .hsContent {
-	clip-path: polygon(0% 0%, 35% 0%, 45% 100%, 0% 100%);
-	display: flex;
-	flex-flow: column;
-	justify-content: flex-end;
-}
-
-#frame-1 .hsContent p {
-	width: 35%;
-}
-
-/* frame 2 */
-#frame-2 .bcg {
-	background-image: url('../img/placeholder/hl2.jpg')
-}
-
-#frame-2 .hsContent {
-	clip-path: polygon(45% 0%, 100% 0%, 100% 100%, 55% 100%);
-	text-align: right;
-	background-color: rgba(245, 245, 245, 0.5);
-	color: black;
-}
-
-#frame-2 .hsContent p {
-	width: 40%;
-	margin-right: 0;
-	margin-left: auto;
-}
-
-/* frame 3 */
-#frame-3 .bcg {
-	background-image: url('../img/placeholder/warframe.jpg')
-}
-
-#frame-3 .hsContent {
-	clip-path: polygon(0% 0%, 55% 0%, 65% 100%, 0% 100%);
-}
-
-#frame-3 .hsContent p {
-	width: 55%;
-}
-
-/* frame 4 */
-#frame-4 .bcg {
-	background-image: url('../img/placeholder/dark.jpg')
+	.frame_container {
+		width: 40%;
+	}
 }
