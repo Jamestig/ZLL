@@ -88,27 +88,59 @@ body {
 /*// HEADER //*/
 
 .header {
-	height: 200px;
+	height: 160px;
 	position: fixed;
 	z-index: 10;
-	background-color: rgba(0, 0, 0, .5);
 	top: 0;
 	width: 100%;
 	display: flex;
 	flex-flow: column;
-	padding: 1em 0;
+	justify-content: flex-end;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.5+0,0+100 */
+	background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+	/* FF3.6-15 */
+	background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+	/* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+	/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=0);
+	/* IE6-9 */
 
 	&_title {
-		h1 {
-			font-weight: bold;
-			padding-left: 5vw;
-			margin: 0;
+		padding-left: 5vw;
+		margin: 0;
 
-			a {
-				color: rgba(255, 255, 255, 0.5);
-				font-size: 1.8em;
-			}
+		a {
+			color: rgba(255, 255, 255, 0.5);
+			font-size: 1.8em;
 		}
+
+		span {
+			letter-spacing: .08em;
+		}
+
+		span:first-of-type {
+			color: var(--brand-red);
+		}
+
+		span:last-of-type {
+			color: var(--brand-red);
+		}
+	}
+
+	.hr {
+		/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff2323+0,201470+100 */
+		background: rgb(255, 35, 35);
+		/* Old browsers */
+		background: -moz-linear-gradient(left, rgba(255, 35, 35, 1) 0%, rgba(32, 20, 112, 1) 100%);
+		/* FF3.6-15 */
+		background: -webkit-linear-gradient(left, rgba(255, 35, 35, 1) 0%, rgba(32, 20, 112, 1) 100%);
+		/* Chrome10-25,Safari5.1-6 */
+		background: linear-gradient(to right, rgba(255, 35, 35, 1) 0%, rgba(32, 20, 112, 1) 100%);
+		/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff2323', endColorstr='#201470', GradientType=1);
+		/* IE6-9 */
+		z-index: 15;
 	}
 
 	&_nav {
@@ -116,8 +148,18 @@ body {
 		flex-flow: row;
 		justify-content: space-between;
 		align-items: flex-end;
-		height: 100%;
-		margin: 0 5vw;
+		margin: 0 4vw;
+		&-site {
+			a {
+				color: var(--font-white);
+				opacity: 0.8;
+			}
+		}
+		&-info {
+			a {
+				color: var(--font-grey);
+			}
+		}
 
 		ul {
 
@@ -125,10 +167,8 @@ body {
 				display: inline;
 
 				a {
-					color: rgba(255, 255, 255, 0.5);
 					font-size: 2em;
 					padding: .5em;
-					font-weight: bold;
 				}
 			}
 		}
@@ -138,18 +178,21 @@ body {
 @media screen and (orientation: landscape) {
 
 	.header {
-		height: 101px;
+		height: 81px;
+
+		.hr {
+			margin-top: .1em;
+		}
 
 		&_title {
-			h1 {
 
-				a {
-					font-size: .8em;
-				}
+			a {
+				font-size: .8em;
 			}
 		}
 
 		&_nav {
+			margin-left: 9vw;
 
 			ul {
 
@@ -169,17 +212,24 @@ body {
 @media screen and (min-width: 1024px) and (orientation: landscape) {
 
 	.header {
-		flex-flow: row;
+		flex-flow: column;
+		height: 121px;
+		padding-top: 0;
 
 		&_title {
-			width: 25%;
+			width: 100%;
 			align-self: flex-end;
+			margin: auto;
+			margin-bottom: 0;
+
 		}
 
+		.hr {}
+
 		&_nav {
-			flex-basis: 70%;
 			justify-content: space-between;
 			align-items: flex-end;
+			height: auto;
 
 			&-site {
 				margin-left: 0;
@@ -188,35 +238,46 @@ body {
 	}
 }
 
-/*// BLOCKS //*/
+/*// BLOCKS - MOBILE //*/
+
+main {
+	margin-top: 113px;
+}
 
 .frame {
 	transition: opacity 2s ease-in-out;
 	scroll-snap-align: start;
-	height: calc(50vh);
+	height: calc(55vh);
 	position: relative;
-	transition: height 1s linear;
+	border-bottom: 1px solid black;
 }
 
-/*// ELEMENTS //*/
+/*// ELEMENTS - MOBILE //*/
 
 .frame_container {
 	display: flex;
 	flex-flow: column;
 	justify-content: flex-end;
 	height: 100%;
+
+	.frame_content {
+		background-color: rgba(0, 0, 0, 0.6);
+		padding: 2vh 0;
+
+		h2,
+		p {
+			padding: 0 5vw;
+			transition: opacity .1s linear;
+		}
+
+		h2 {
+			font-size: 1.8em;
+			opacity: .8;
+		}
+	}
 }
 
-.frame_content {
-	background-color: rgba(0, 0, 0, 0.5);
-}
-
-.frame_content h2,
-.frame_content p {
-	padding: 0 5vw;
-}
-
-/*// MODIFIERS //*/
+/*// MODIFIERS - MOBILE //*/
 
 .hr {
 	position: relative;
@@ -247,32 +308,6 @@ body {
 	visibility: hidden;
 }
 
-/*// BACKGROUNDS //*/
-
-.bg-01 {
-	background: url(../img/mobile/cyberpunk.jpg);
-}
-
-.bg-02 {
-	background: url(../img/mobile/hl2.jpg);
-}
-
-.bg-03 {
-	background: url(../img/mobile/warframe.jpg);
-}
-
-.bg-04 {
-	background: url(../img/mobile/ori.jpg);
-}
-
-.bg-05 {
-	background: url(../img/mobile/dark.jpg);
-}
-
-.bg-06 {
-	background: url(../img/mobile/twilight.jpg);
-}
-
 @media screen and (orientation: landscape) {
 
 	body {
@@ -280,7 +315,7 @@ body {
 	}
 
 	main {
-		margin-top: 100px;
+		margin-top: 50px;
 	}
 
 	h2 {
@@ -291,10 +326,10 @@ body {
 		font-size: 1em;
 	}
 
-	/*// BLOCKS //*/
+	/*// BLOCKS - WIDE //*/
 
 	.frame {
-		height: 100vh;
+		height: calc(100vh - 80px);
 		background-size: cover !important;
 
 		.frame_container {
@@ -305,8 +340,15 @@ body {
 				display: flex;
 				flex-flow: column;
 				justify-content: flex-end;
+
+				h2 {
+					position: sticky;
+					bottom: 20px;
+				}
 			}
 		}
+
+		/*// FRAME CLIPPING //*/
 
 		/* Right side frames */
 		&:nth-child(even) {
@@ -315,7 +357,7 @@ body {
 				margin-left: auto;
 
 				.frame_content {
-					background-color: rgba(255, 255, 255, 0.5);
+					background-color: rgba(255, 255, 255, 0.7);
 
 					h2 {
 						color: black;
@@ -396,7 +438,7 @@ body {
 					clip-path: polygon(65% 0%, 100% 0%, 100% 100%, 55% 100%);
 
 					h2 {
-						width: 45%;
+						width: 40%;
 						margin-right: 0;
 						margin-left: auto;
 					}
@@ -448,9 +490,49 @@ body {
 			}
 		}
 	}
+}
 
-	/*// ELEMENTS //*/
+@media screen and (min-width: 1024px) and (orientation: landscape) {
+	.frame {
+		height: 80vh;
+		.frame_container {
+			.frame_content {
+				h2 {
+					bottom: 7vh;
+				}
+			}
+		}
+	}
 
+}
+
+/*// BACKGROUNDS //*/
+
+.bg-01 {
+	background: url(../img/mobile/cyberpunk.jpg);
+}
+
+.bg-02 {
+	background: url(../img/mobile/hl2.jpg);
+}
+
+.bg-03 {
+	background: url(../img/mobile/warframe.jpg);
+}
+
+.bg-04 {
+	background: url(../img/mobile/ori.jpg);
+}
+
+.bg-05 {
+	background: url(../img/mobile/dark.jpg);
+}
+
+.bg-06 {
+	background: url(../img/mobile/twilight.jpg);
+}
+
+@media screen and (orientation: landscape) {
 	.bg-01 {
 		background: url(../img/full/cyberpunk.jpg);
 	}
@@ -458,25 +540,16 @@ body {
 	.bg-02 {
 		background: url(../img/full/hl2.jpg);
 
-		.frame_content {
-			clip-path: polygon(0% 0%, 85% 0%, 90% 100%, 0% 100%);
-		}
 	}
 
 	.bg-03 {
 		background: url(../img/full/warframe.jpg);
 
-		.frame_content {
-			clip-path: polygon(0% 0%, 90% 0%, 95% 100%, 0% 100%);
-		}
 	}
 
 	.bg-04 {
 		background: url(../img/full/ori.jpg);
 
-		.frame_content {
-			clip-path: polygon(0% 0%, 95% 0%, 100% 100%, 0% 100%);
-		}
 	}
 
 	.bg-05 {
@@ -486,11 +559,4 @@ body {
 	.bg-06 {
 		background: url(../img/full/twilight.jpg);
 	}
-}
-
-@media screen and (min-width: 1024px) and (orientation: landscape) {
-	.frame {
-		height: 70vh;
-	}
-
 }
