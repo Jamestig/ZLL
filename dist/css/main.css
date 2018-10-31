@@ -66,49 +66,72 @@ h6 {
 body {
   scroll-snap-type: y mandatory;
   overflow-y: auto;
-  overflow-x: hidden;
-  scroll-padding-top: 200px; }
+  overflow-x: hidden; }
 
 /*// HEADER //*/
 .header {
   height: 200px;
   position: fixed;
   z-index: 10;
-  background-color: rgba(0, 0, 0, 0.9);
+  background-color: rgba(0, 0, 0, 0.5);
   top: 0;
   width: 100%;
   display: flex;
-  flex-flow: column; }
+  flex-flow: column;
+  padding: 1em 0; }
   .header_title h1 {
     font-weight: bold;
-    padding-left: 5vw; }
+    padding-left: 5vw;
+    margin: 0; }
     .header_title h1 a {
       color: rgba(255, 255, 255, 0.5);
-      font-size: 1.4em; }
+      font-size: 1.8em; }
   .header_nav {
     display: flex;
     flex-flow: row;
-    justify-content: space-around;
-    align-items: center;
-    height: 100%; }
-    .header_nav ul {
-      display: flex;
-      flex-flow: row; }
+    justify-content: space-between;
+    align-items: flex-end;
+    height: 100%;
+    margin: 0 5vw; }
+    .header_nav ul li {
+      display: inline; }
       .header_nav ul li a {
         color: rgba(255, 255, 255, 0.5);
-        font-size: 1.5em;
-        padding: 1em;
+        font-size: 2em;
+        padding: .5em;
         font-weight: bold; }
 
-main {
-  margin-top: 200px; }
+@media screen and (orientation: landscape) {
+  .header {
+    height: 101px; }
+    .header_title h1 a {
+      font-size: .8em; }
+    .header_nav ul li {
+      display: inline; }
+      .header_nav ul li a {
+        font-size: 1.2em;
+        padding: .8em; } }
+
+@media screen and (min-width: 1024px) and (orientation: landscape) {
+  .header {
+    flex-flow: row; }
+    .header_title {
+      width: 25%;
+      align-self: flex-end; }
+    .header_nav {
+      flex-basis: 70%;
+      justify-content: space-between;
+      align-items: flex-end; }
+      .header_nav-site {
+        margin-left: 0; } }
 
 /*// BLOCKS //*/
 .frame {
   transition: opacity 2s ease-in-out;
   scroll-snap-align: start;
-  height: calc(50vh - 100px);
-  position: relative; }
+  height: calc(50vh);
+  position: relative;
+  transition: height 1s linear; }
 
 /*// ELEMENTS //*/
 .frame_container {
@@ -122,7 +145,7 @@ main {
 
 .frame_content h2,
 .frame_content p {
-  padding: 0 15vw 0 5vw; }
+  padding: 0 5vw; }
 
 /*// MODIFIERS //*/
 .hr {
@@ -130,7 +153,7 @@ main {
   width: 100%;
   border-style: none;
   height: 2px;
-  z-index: 15;
+  z-index: 8;
   background-color: white; }
 
 .hidden {
@@ -171,51 +194,95 @@ main {
 
 @media screen and (orientation: landscape) {
   body {
-    scroll-padding-top: 99px; }
+    scroll-padding-top: 0px; }
   main {
     margin-top: 100px; }
-  /*// HEADER //*/
-  .header {
-    height: 100px;
-    background-color: rgba(0, 0, 0, 0.9); }
-    .header_title h1 {
-      margin: 0; }
-      .header_title h1 a {
-        font-size: .8em; }
-    .header_nav {
-      display: flex;
-      flex-flow: row;
-      justify-content: space-between;
-      height: 100%; }
-      .header_nav-site {
-        margin-left: 5vw; }
-      .header_nav ul {
-        display: flex;
-        flex-flow: row; }
-        .header_nav ul li a {
-          font-size: 1.2em;
-          padding: .8em;
-          font-weight: bold; }
   h2 {
     font-size: 1.5em; }
   p {
     font-size: 1em; }
   /*// BLOCKS //*/
   .frame {
-    height: calc(100vh - 100px);
-    background-size: cover !important; }
-  .frame_container {
-    width: 40%; }
-  .frame_content {
-    height: 100%;
-    display: flex;
-    flex-flow: column;
-    justify-content: flex-end; }
+    height: 100vh;
+    background-size: cover !important;
+    /* Right side frames */
+    /* Frame 1/6 */
+    /* Frame 2/6 */
+    /* Frame 3/6 */
+    /* Frame 4/6 */
+    /* Frame 5/6 */
+    /* Frame 6/6 */ }
+    .frame .frame_container {
+      width: 100%; }
+      .frame .frame_container .frame_content {
+        height: 100%;
+        display: flex;
+        flex-flow: column;
+        justify-content: flex-end; }
+    .frame:nth-child(even) .frame_container {
+      margin-right: 0;
+      margin-left: auto; }
+      .frame:nth-child(even) .frame_container .frame_content {
+        background-color: rgba(255, 255, 255, 0.5); }
+        .frame:nth-child(even) .frame_container .frame_content h2 {
+          color: black;
+          text-align: right; }
+        .frame:nth-child(even) .frame_container .frame_content p {
+          color: black;
+          text-align: right; }
+        .frame:nth-child(even) .frame_container .frame_content .hr {
+          background-color: black; }
+    .frame:nth-child(6n + 1) .frame_container .frame_content {
+      clip-path: polygon(0% 0%, 35% 0%, 45% 100%, 0% 100%); }
+      .frame:nth-child(6n + 1) .frame_container .frame_content h2 {
+        width: 45%; }
+      .frame:nth-child(6n + 1) .frame_container .frame_content p {
+        width: 45%; }
+    .frame:nth-child(6n + 2) .frame_container .frame_content {
+      clip-path: polygon(45% 0%, 100% 0%, 100% 100%, 55% 100%); }
+      .frame:nth-child(6n + 2) .frame_container .frame_content h2 {
+        width: 45%;
+        margin-right: 0;
+        margin-left: auto; }
+      .frame:nth-child(6n + 2) .frame_container .frame_content p {
+        width: 45%;
+        margin-right: 0;
+        margin-left: auto; }
+    .frame:nth-child(6n + 3) .frame_container .frame_content {
+      clip-path: polygon(0% 0%, 55% 0%, 65% 100%, 0% 100%); }
+      .frame:nth-child(6n + 3) .frame_container .frame_content h2 {
+        width: 55%; }
+      .frame:nth-child(6n + 3) .frame_container .frame_content p {
+        width: 55%; }
+    .frame:nth-child(6n + 4) .frame_container .frame_content {
+      clip-path: polygon(65% 0%, 100% 0%, 100% 100%, 55% 100%); }
+      .frame:nth-child(6n + 4) .frame_container .frame_content h2 {
+        width: 45%;
+        margin-right: 0;
+        margin-left: auto; }
+      .frame:nth-child(6n + 4) .frame_container .frame_content p {
+        width: 45%;
+        margin-right: 0;
+        margin-left: auto; }
+    .frame:nth-child(6n + 5) .frame_container .frame_content {
+      clip-path: polygon(0% 0%, 55% 0%, 45% 100%, 0% 100%); }
+      .frame:nth-child(6n + 5) .frame_container .frame_content h2 {
+        width: 45%; }
+      .frame:nth-child(6n + 5) .frame_container .frame_content p {
+        width: 45%; }
+    .frame:nth-child(6n + 6) .frame_container .frame_content {
+      clip-path: polygon(45% 0%, 100% 0%, 100% 100%, 35% 100%); }
+      .frame:nth-child(6n + 6) .frame_container .frame_content h2 {
+        width: 55%;
+        margin-right: 0;
+        margin-left: auto; }
+      .frame:nth-child(6n + 6) .frame_container .frame_content p {
+        width: 55%;
+        margin-right: 0;
+        margin-left: auto; }
   /*// ELEMENTS //*/
   .bg-01 {
     background: url(../img/full/cyberpunk.jpg); }
-    .bg-01 .frame_content {
-      clip-path: polygon(0% 0%, 80% 0%, 85% 100%, 0% 100%); }
   .bg-02 {
     background: url(../img/full/hl2.jpg); }
     .bg-02 .frame_content {
@@ -235,8 +302,6 @@ main {
 
 @media screen and (min-width: 1024px) and (orientation: landscape) {
   .frame {
-    height: 70vh; }
-  .frame_container {
-    width: 40%; } }
+    height: 70vh; } }
 
 /*# sourceMappingURL=main.css.map */

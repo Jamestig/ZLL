@@ -83,7 +83,6 @@ body {
 	scroll-snap-type: y mandatory;
 	overflow-y: auto;
 	overflow-x: hidden;
-	scroll-padding-top: 200px;
 }
 
 /*// HEADER //*/
@@ -92,20 +91,22 @@ body {
 	height: 200px;
 	position: fixed;
 	z-index: 10;
-	background-color: rgba(0, 0, 0, .9);
+	background-color: rgba(0, 0, 0, .5);
 	top: 0;
 	width: 100%;
 	display: flex;
 	flex-flow: column;
+	padding: 1em 0;
 
 	&_title {
 		h1 {
 			font-weight: bold;
 			padding-left: 5vw;
+			margin: 0;
 
 			a {
 				color: rgba(255, 255, 255, 0.5);
-				font-size: 1.4em;
+				font-size: 1.8em;
 			}
 		}
 	}
@@ -113,19 +114,20 @@ body {
 	&_nav {
 		display: flex;
 		flex-flow: row;
-		justify-content: space-around;
-		align-items: center;
+		justify-content: space-between;
+		align-items: flex-end;
 		height: 100%;
+		margin: 0 5vw;
 
 		ul {
-			display: flex;
-			flex-flow: row;
 
 			li {
+				display: inline;
+
 				a {
 					color: rgba(255, 255, 255, 0.5);
-					font-size: 1.5em;
-					padding: 1em;
+					font-size: 2em;
+					padding: .5em;
 					font-weight: bold;
 				}
 			}
@@ -133,8 +135,57 @@ body {
 	}
 }
 
-main {
-	margin-top: 200px;
+@media screen and (orientation: landscape) {
+
+	.header {
+		height: 101px;
+
+		&_title {
+			h1 {
+
+				a {
+					font-size: .8em;
+				}
+			}
+		}
+
+		&_nav {
+
+			ul {
+
+				li {
+					display: inline;
+
+					a {
+						font-size: 1.2em;
+						padding: .8em;
+					}
+				}
+			}
+		}
+	}
+}
+
+@media screen and (min-width: 1024px) and (orientation: landscape) {
+
+	.header {
+		flex-flow: row;
+
+		&_title {
+			width: 25%;
+			align-self: flex-end;
+		}
+
+		&_nav {
+			flex-basis: 70%;
+			justify-content: space-between;
+			align-items: flex-end;
+
+			&-site {
+				margin-left: 0;
+			}
+		}
+	}
 }
 
 /*// BLOCKS //*/
@@ -142,10 +193,10 @@ main {
 .frame {
 	transition: opacity 2s ease-in-out;
 	scroll-snap-align: start;
-	height: calc(50vh - 100px);
+	height: calc(50vh);
 	position: relative;
+	transition: height 1s linear;
 }
-
 
 /*// ELEMENTS //*/
 
@@ -162,7 +213,7 @@ main {
 
 .frame_content h2,
 .frame_content p {
-	padding: 0 15vw 0 5vw;
+	padding: 0 5vw;
 }
 
 /*// MODIFIERS //*/
@@ -172,7 +223,7 @@ main {
 	width: 100%;
 	border-style: none;
 	height: 2px;
-	z-index: 15;
+	z-index: 8;
 	background-color: white;
 }
 
@@ -225,51 +276,12 @@ main {
 @media screen and (orientation: landscape) {
 
 	body {
-		scroll-padding-top: 99px;
+		scroll-padding-top: 0px;
 	}
 
 	main {
 		margin-top: 100px;
 	}
-
-	/*// HEADER //*/
-
-	.header {
-		height: 100px;
-		background-color: rgba(0, 0, 0, 0.9);
-		&_title {
-			h1 {
-				margin: 0;
-				a {
-					font-size: .8em;
-				}
-			}
-		}
-
-		&_nav {
-			display: flex;
-			flex-flow: row;
-			justify-content: space-between;
-			height: 100%;
-			&-site {
-				margin-left: 5vw;
-			}
-
-			ul {
-				display: flex;
-				flex-flow: row;
-
-				li {
-					a {
-						font-size: 1.2em;
-						padding: .8em;
-						font-weight: bold;
-					}
-				}
-			}
-		}
-	}
-
 
 	h2 {
 		font-size: 1.5em;
@@ -282,29 +294,165 @@ main {
 	/*// BLOCKS //*/
 
 	.frame {
-		height: calc(100vh - 100px);
+		height: 100vh;
 		background-size: cover !important;
-	}
 
-	.frame_container {
-		width: 40%;
-	}
+		.frame_container {
+			width: 100%;
 
-	.frame_content {
-		height: 100%;
-		display: flex;
-		flex-flow: column;
-		justify-content: flex-end;
+			.frame_content {
+				height: 100%;
+				display: flex;
+				flex-flow: column;
+				justify-content: flex-end;
+			}
+		}
+
+		/* Right side frames */
+		&:nth-child(even) {
+			.frame_container {
+				margin-right: 0;
+				margin-left: auto;
+
+				.frame_content {
+					background-color: rgba(255, 255, 255, 0.5);
+
+					h2 {
+						color: black;
+						text-align: right;
+					}
+
+					p {
+						color: black;
+						text-align: right;
+					}
+
+					.hr {
+						background-color: black;
+					}
+				}
+			}
+		}
+
+		/* Frame 1/6 */
+		&:nth-child(6n + 1) {
+			.frame_container {
+				.frame_content {
+					clip-path: polygon(0% 0%, 35% 0%, 45% 100%, 0% 100%);
+
+					h2 {
+						width: 45%;
+					}
+
+					p {
+						width: 45%;
+					}
+				}
+			}
+		}
+
+		/* Frame 2/6 */
+		&:nth-child(6n + 2) {
+			.frame_container {
+				.frame_content {
+					clip-path: polygon(45% 0%, 100% 0%, 100% 100%, 55% 100%);
+
+					h2 {
+						width: 45%;
+						margin-right: 0;
+						margin-left: auto;
+					}
+
+					p {
+						width: 45%;
+						margin-right: 0;
+						margin-left: auto;
+					}
+				}
+			}
+		}
+
+		/* Frame 3/6 */
+		&:nth-child(6n + 3) {
+			.frame_container {
+				.frame_content {
+					clip-path: polygon(0% 0%, 55% 0%, 65% 100%, 0% 100%);
+
+					h2 {
+						width: 55%;
+					}
+
+					p {
+						width: 55%;
+					}
+				}
+			}
+		}
+
+		/* Frame 4/6 */
+		&:nth-child(6n + 4) {
+			.frame_container {
+				.frame_content {
+					clip-path: polygon(65% 0%, 100% 0%, 100% 100%, 55% 100%);
+
+					h2 {
+						width: 45%;
+						margin-right: 0;
+						margin-left: auto;
+					}
+
+					p {
+						width: 45%;
+						margin-right: 0;
+						margin-left: auto;
+					}
+				}
+			}
+		}
+
+		/* Frame 5/6 */
+		&:nth-child(6n + 5) {
+			.frame_container {
+				.frame_content {
+					clip-path: polygon(0% 0%, 55% 0%, 45% 100%, 0% 100%);
+
+					h2 {
+						width: 45%;
+					}
+
+					p {
+						width: 45%;
+					}
+				}
+			}
+		}
+
+		/* Frame 6/6 */
+		&:nth-child(6n + 6) {
+			.frame_container {
+				.frame_content {
+					clip-path: polygon(45% 0%, 100% 0%, 100% 100%, 35% 100%);
+
+					h2 {
+						width: 55%;
+						margin-right: 0;
+						margin-left: auto;
+					}
+
+					p {
+						width: 55%;
+						margin-right: 0;
+						margin-left: auto;
+					}
+				}
+			}
+		}
 	}
 
 	/*// ELEMENTS //*/
 
 	.bg-01 {
 		background: url(../img/full/cyberpunk.jpg);
-
-		.frame_content {
-			clip-path: polygon(0% 0%, 80% 0%, 85% 100%, 0% 100%);
-		}
 	}
 
 	.bg-02 {
@@ -345,7 +493,4 @@ main {
 		height: 70vh;
 	}
 
-	.frame_container {
-		width: 40%;
-	}
 }

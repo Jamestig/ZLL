@@ -15,3 +15,23 @@ $(document).ready(function () {
     });
   });
 });
+
+$(window).scroll(function() {
+	
+	$('.frame').each(function() {
+		var topHalf = $(windowHeight / 2);
+		if ( $(this).offset().top > topHalf) {
+			console.log($(this));
+		}
+	});
+});
+
+$(function() {
+  var eTop = $('.frame').offset().top; //get the offset top of the element
+  log(eTop - $(window).scrollTop()); //position of the ele w.r.t window
+
+  $(window).scroll(function() { //when window is scrolled
+		log(eTop - $(window).scrollTop());
+		console.log(eTp)
+  });
+});
