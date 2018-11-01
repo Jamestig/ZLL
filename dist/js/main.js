@@ -1,5 +1,14 @@
 $(document).ready(function () {
 
+	var contentTop = $('.frame_content').offset().top;
+	$(window).on('scroll', function () {
+		$('.frame_content').each(function () {
+			if ($(this).scrollTop() >= contentTop) {
+				console.log('top');
+			}
+		})
+
+	});
 	let vh = window.innerHeight * 0.01;
 	let innerHeight = window.innerHeight;
 	document.documentElement.style.setProperty('--vh', `${vh}px`);
@@ -31,6 +40,5 @@ $(document).ready(function () {
 			/* The viewport is currently in landscape orientation */
 		}
 	}
-
 
 });

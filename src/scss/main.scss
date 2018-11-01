@@ -11,12 +11,14 @@ html {
 html,
 body,
 section,
+picture,
 figure,
 img,
 ul,
 li {
 	margin: 0;
 	padding: 0;
+	border: none;
 }
 
 li {
@@ -47,11 +49,6 @@ a {
 	--tag-grey: lightgrey;
 }
 
-.frame {
-  height: 50vh;
-  height: calc(var(--vh, 1vh) * 50);
-}
-
 /*// GLOBAL TYPOGRAPHY //*/
 
 html {
@@ -66,10 +63,12 @@ html {
 
 p {
 	color: white;
-	font-size: 2em;
+	font-family: 'Open Sans', sans-serif;
 }
 
 /*// Font styling //*/
+
+@import url('https://fonts.googleapis.com/css?family=Lato');
 
 h1,
 h2,
@@ -80,6 +79,8 @@ h6 {
 	text-transform: uppercase;
 	letter-spacing: .05em;
 	color: white;
+	font-family: 'Open Sans', sans-serif;
+	font-weight: normal;
 }
 
 /*// SCROLL SNAP //*/
@@ -88,47 +89,35 @@ body {
 	scroll-snap-type: y mandatory;
 	overflow-y: auto;
 	overflow-x: hidden;
+	scroll-padding-top: 40px;
 }
 
 /*// HEADER //*/
 
 .header {
-	height: 160px;
 	position: fixed;
+	display: block;
 	z-index: 10;
 	top: 0;
 	width: 100%;
-	display: flex;
-	flex-flow: column;
-	justify-content: flex-end;
 	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.5+0,0+100 */
-	background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+	background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
 	/* FF3.6-15 */
-	background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+	background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
 	/* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+	background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
 	/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
 	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=0);
 	/* IE6-9 */
 
 	&_title {
+		height: 40px;
 		padding-left: 5vw;
+		padding-top: 5px;
 		margin: 0;
+		font-size: 1.6em;
 
 		a {
-			color: rgba(255, 255, 255, 0.5);
-			font-size: 1.8em;
-		}
-
-		span {
-			letter-spacing: .08em;
-		}
-
-		span:first-of-type {
-			color: var(--brand-red);
-		}
-
-		span:last-of-type {
 			color: var(--brand-red);
 		}
 	}
@@ -146,6 +135,9 @@ body {
 		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff2323', endColorstr='#201470', GradientType=1);
 		/* IE6-9 */
 		z-index: 15;
+		margin-top: 0;
+		margin-left: 0;
+		height: 1px;
 	}
 
 	&_nav {
@@ -154,12 +146,15 @@ body {
 		justify-content: space-between;
 		align-items: flex-end;
 		margin: 0 4vw;
+		font-size: .8em;
+
 		&-site {
 			a {
 				color: var(--font-white);
 				opacity: 0.8;
 			}
 		}
+
 		&-info {
 			a {
 				color: var(--font-grey);
@@ -172,7 +167,6 @@ body {
 				display: inline;
 
 				a {
-					font-size: 2em;
 					padding: .5em;
 				}
 			}
@@ -184,20 +178,23 @@ body {
 
 	.header {
 		height: 81px;
+		background: none;
 
 		.hr {
-			margin-top: .1em;
+			height: 1px;
 		}
 
 		&_title {
+			height: 40px;
+			background-color: rgba(0, 0, 0, 0.5);
 
 			a {
-				font-size: .8em;
 			}
 		}
 
 		&_nav {
 			margin-left: 9vw;
+			font-size: 1em;
 
 			ul {
 
@@ -205,7 +202,6 @@ body {
 					display: inline;
 
 					a {
-						font-size: 1.2em;
 						padding: .8em;
 					}
 				}
@@ -217,7 +213,6 @@ body {
 @media screen and (min-width: 1024px) and (orientation: landscape) {
 
 	.header {
-		flex-flow: column;
 		height: 121px;
 		padding-top: 0;
 
@@ -228,8 +223,6 @@ body {
 			margin-bottom: 0;
 
 		}
-
-		.hr {}
 
 		&_nav {
 			justify-content: space-between;
@@ -246,27 +239,34 @@ body {
 /*// BLOCKS - MOBILE //*/
 
 main {
-	margin-top: 113px;
+	margin-top: 30px;
+}
+
+img {
+	width: 100%;
 }
 
 .frame {
 	transition: opacity 2s ease-in-out;
 	scroll-snap-align: start;
 	position: relative;
-	border-bottom: 1px solid black;
+	display: flex;
+	flex-flow: row;
 }
 
 /*// ELEMENTS - MOBILE //*/
 
 .frame_container {
+	position: relative;
 	display: flex;
 	flex-flow: column;
 	justify-content: flex-end;
 	height: 100%;
 
 	.frame_content {
+		position: absolute;
 		background-color: rgba(0, 0, 0, 0.6);
-		padding: 2vh 0;
+		padding-bottom: 1vh;
 
 		h2,
 		p {
@@ -275,21 +275,23 @@ main {
 		}
 
 		h2 {
-			font-size: 1.8em;
 			opacity: .8;
+			font-size: 1em;
+		}
+		p {
+			font-size: .8em;
 		}
 	}
 }
 
-/*// MODIFIERS - MOBILE //*/
+/*// MODIFIERS //*/
 
 .hr {
-	position: relative;
-	width: 100%;
 	border-style: none;
-	height: 2px;
+	height: 1px;
 	z-index: 8;
 	background-color: white;
+	margin-left: 5vw;
 }
 
 .hidden {
@@ -319,25 +321,21 @@ main {
 	}
 
 	main {
-		margin-top: 50px;
-	}
-
-	h2 {
-		font-size: 1.5em;
-	}
-
-	p {
-		font-size: 1em;
+		margin-top: 0px;
 	}
 
 	/*// BLOCKS - WIDE //*/
 
 	.frame {
-		height: calc(var(--vh) * 100);
-		background-size: cover !important;
 
 		.frame_container {
 			width: 100%;
+
+			img {
+				height: calc(var(--vh, 1vh) * 100);
+				width: auto;
+
+			}
 
 			.frame_content {
 				height: 100%;
@@ -348,8 +346,19 @@ main {
 				h2 {
 					position: sticky;
 					bottom: 20px;
+					font-size: 1.2em;
+				}
+				p {
+					font-size: .9em;
 				}
 			}
+		}
+
+		/*// MODIFIERS - WIDE //*/
+
+		.hr {
+			width: 100%;
+			margin-left: 0;
 		}
 
 		/*// FRAME CLIPPING //*/
@@ -501,8 +510,10 @@ main {
 	main {
 		margin-top: 90px;
 	}
+
 	.frame {
 		height: 80vh;
+
 		.frame_container {
 			.frame_content {
 				h2 {
@@ -512,59 +523,4 @@ main {
 		}
 	}
 
-}
-
-/*// BACKGROUNDS //*/
-
-.bg-01 {
-	background: url(../img/mobile/cyberpunk.jpg);
-}
-
-.bg-02 {
-	background: url(../img/mobile/hl2.jpg);
-}
-
-.bg-03 {
-	background: url(../img/mobile/warframe.jpg);
-}
-
-.bg-04 {
-	background: url(../img/mobile/ori.jpg);
-}
-
-.bg-05 {
-	background: url(../img/mobile/dark.jpg);
-}
-
-.bg-06 {
-	background: url(../img/mobile/twilight.jpg);
-}
-
-@media screen and (orientation: landscape) {
-	.bg-01 {
-		background: url(../img/full/cyberpunk.jpg);
-	}
-
-	.bg-02 {
-		background: url(../img/full/hl2.jpg);
-
-	}
-
-	.bg-03 {
-		background: url(../img/full/warframe.jpg);
-
-	}
-
-	.bg-04 {
-		background: url(../img/full/ori.jpg);
-
-	}
-
-	.bg-05 {
-		background: url(../img/full/dark.jpg);
-	}
-
-	.bg-06 {
-		background: url(../img/full/twilight.jpg);
-	}
 }
