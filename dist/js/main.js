@@ -1,14 +1,36 @@
 $(document).ready(function () {
 
-	$(window).scroll(function () {
+	let vh = window.innerHeight * 0.01;
+	let innerHeight = window.innerHeight;
+	document.documentElement.style.setProperty('--vh', `${vh}px`);
+	console.log("vh unit = " + vh);
+	console.log("window inner height = " + innerHeight);
 
-		$('.frame').each(function () {
-			var topHalf = $(window).height() * 0.2;
-			console.log(topHalf);
-			if ($(this).offset().top > topHalf) {
-				console.log($(this));
-			}
-		});
+	window.addEventListener('resize', () => {
+		let vh = window.innerHeight * 0.01;
+		let newHeight = window.innerHeight;
+		if (newHeight > innerHeight) {
+			document.documentElement.style.setProperty('--vh', `${vh}px`);
+		}
+		console.log("resize vh unit = " + vh);
+		console.log("window new height = " + newHeight);
 	});
+
+	var mediaQueryList = window.matchMedia("(orientation: portrait)"); // Create the query list.
+	function handleOrientationChange(mql) {
+
+	} // Define a callback function for the event listener.
+	mediaQueryList.addListener(handleOrientationChange); // Add the callback function as a listener to the query list.
+
+	handleOrientationChange(mediaQueryList); // Run the orientation change handler once.
+
+	function handleOrientationChange(evt) {
+		if (evt.matches) {
+			/* The viewport is currently in portrait orientation */
+		} else {
+			/* The viewport is currently in landscape orientation */
+		}
+	}
+
 
 });

@@ -47,6 +47,11 @@ a {
 	--tag-grey: lightgrey;
 }
 
+.frame {
+  height: 50vh;
+  height: calc(var(--vh, 1vh) * 50);
+}
+
 /*// GLOBAL TYPOGRAPHY //*/
 
 html {
@@ -247,7 +252,6 @@ main {
 .frame {
 	transition: opacity 2s ease-in-out;
 	scroll-snap-align: start;
-	height: calc(55vh);
 	position: relative;
 	border-bottom: 1px solid black;
 }
@@ -329,7 +333,7 @@ main {
 	/*// BLOCKS - WIDE //*/
 
 	.frame {
-		height: calc(100vh - 80px);
+		height: calc(var(--vh) * 100);
 		background-size: cover !important;
 
 		.frame_container {
@@ -493,6 +497,10 @@ main {
 }
 
 @media screen and (min-width: 1024px) and (orientation: landscape) {
+
+	main {
+		margin-top: 90px;
+	}
 	.frame {
 		height: 80vh;
 		.frame_container {
