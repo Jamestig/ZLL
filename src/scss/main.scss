@@ -68,8 +68,6 @@ p {
 
 /*// Font styling //*/
 
-@import url('https://fonts.googleapis.com/css?family=Lato');
-
 h1,
 h2,
 h3,
@@ -113,7 +111,7 @@ body {
 	&_title {
 		height: 40px;
 		padding-left: 5vw;
-		padding-top: 5px;
+		padding-top: 8px;
 		margin: 0;
 		font-size: 1.6em;
 
@@ -151,14 +149,11 @@ body {
 		&-site {
 			a {
 				color: var(--font-white);
-				opacity: 0.8;
 			}
 		}
 
 		&-info {
-			a {
-				color: var(--font-grey);
-			}
+			a {}
 		}
 
 		ul {
@@ -188,8 +183,7 @@ body {
 			height: 40px;
 			background-color: rgba(0, 0, 0, 0.5);
 
-			a {
-			}
+			a {}
 		}
 
 		&_nav {
@@ -278,6 +272,7 @@ img {
 			opacity: .8;
 			font-size: 1em;
 		}
+
 		p {
 			font-size: .8em;
 		}
@@ -316,7 +311,12 @@ img {
 
 @media screen and (orientation: landscape) {
 
+	/*// SCROLL SNAP //*/
+
 	body {
+		scroll-snap-type: y mandatory;
+		overflow-y: auto;
+		overflow-x: hidden;
 		scroll-padding-top: 0px;
 	}
 
@@ -331,9 +331,14 @@ img {
 		.frame_container {
 			width: 100%;
 
-			img {
+			figure {
 				height: calc(var(--vh, 1vh) * 100);
-				width: auto;
+				overflow: hidden;
+			}
+
+			img {
+				height: auto;
+				width: 100%;
 
 			}
 
@@ -342,12 +347,12 @@ img {
 				display: flex;
 				flex-flow: column;
 				justify-content: flex-end;
+				width: 100%;
 
 				h2 {
-					position: sticky;
-					bottom: 20px;
 					font-size: 1.2em;
 				}
+
 				p {
 					font-size: .9em;
 				}
@@ -368,24 +373,7 @@ img {
 			.frame_container {
 				margin-right: 0;
 				margin-left: auto;
-
-				.frame_content {
-					background-color: rgba(255, 255, 255, 0.7);
-
-					h2 {
-						color: black;
-						text-align: right;
-					}
-
-					p {
-						color: black;
-						text-align: right;
-					}
-
-					.hr {
-						background-color: black;
-					}
-				}
+				text-align: right;
 			}
 		}
 
@@ -507,20 +495,131 @@ img {
 
 @media screen and (min-width: 1024px) and (orientation: landscape) {
 
+	html {
+		font-size: 20px;
+	}
+
 	main {
-		margin-top: 90px;
+		margin-top: 0px;
+	}
+
+	.header {
+		&_title {
+			height: 60px;
+			padding-top: 20px;
+			padding-left: 15vw;
+		}
+
+		&_nav {
+			margin-left: 18vw;
+			margin-right: 15vw;
+		}
 	}
 
 	.frame {
-		height: 80vh;
+		height: 90vh;
 
-		.frame_container {
+		&_container {
+
 			.frame_content {
+				padding-bottom: 10vh;
 				h2 {
-					bottom: 7vh;
+					position: sticky;
+					bottom: 30px;
+					font-size: 1.2em;
+					padding-left: 15vw;
+				}
+
+				p {
+					padding-left: 15vw;
+				}
+			}
+		}
+		&:nth-child(even) {
+			.frame_container {
+				.frame_content {
+					h2,
+					p {
+						padding-right: 15vw;
+						padding-left: 0;
+					}
+				}
+			}
+		}
+
+		&:nth-child(4n + 1) {
+			.frame_container {
+				.frame_content {
+					clip-path: polygon(0% 0%, 35% 0%, 50% 100%, 0% 100%);
+
+					h2 {
+						width: 45%;
+					}
+
+					p {
+						width: 45%;
+					}
+				}
+			}
+		}
+
+		/* Frame 2/6 */
+		&:nth-child(4n + 2) {
+			.frame_container {
+				.frame_content {
+					clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 65% 100%);
+
+					h2 {
+						width: 45%;
+						margin-right: 0;
+						margin-left: auto;
+					}
+
+					p {
+						width: 45%;
+						margin-right: 0;
+						margin-left: auto;
+					}
+				}
+			}
+		}
+
+		/* Frame 3/6 */
+		&:nth-child(4n + 3) {
+			.frame_container {
+				.frame_content {
+					clip-path: polygon(0% 0%, 65% 0%, 50% 100%, 0% 100%);
+
+					h2 {
+						width: 55%;
+					}
+
+					p {
+						width: 55%;
+					}
+				}
+			}
+		}
+
+		/* Frame 4/6 */
+		&:nth-child(4n + 4) {
+			.frame_container {
+				.frame_content {
+					clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 35% 100%);
+
+					h2 {
+						width: 40%;
+						margin-right: 0;
+						margin-left: auto;
+					}
+
+					p {
+						width: 45%;
+						margin-right: 0;
+						margin-left: auto;
+					}
 				}
 			}
 		}
 	}
-
 }

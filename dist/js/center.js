@@ -1,23 +1,23 @@
 // Hide elements above header line
 
-$.fn.isInViewport = function() {
-  var elementTop = $(this).offset().top;
-  var elementBottom = elementTop + $(this).outerHeight();
+$.fn.isInViewport = function () {
+	var elementTop = $(this).offset().top;
+	var elementBottom = elementTop + $(this).outerHeight();
 
-  var viewportTop = $(window).scrollTop();
-  var viewportBottom = viewportTop + 100;
+	var viewportTop = $(window).scrollTop();
+	var viewportBottom = viewportTop + 100;
 
-  return elementBottom > viewportTop && elementTop < viewportBottom;
+	return elementBottom > viewportTop && elementTop < viewportBottom;
 };
 
-$(window).on('resize scroll', function() {
-  $('.frame_content').each(function() {
-    if ($(this).isInViewport()) {
-      $(this).find('p, hr, h2').css('opacity', 0);
-    } else {
-      $(this).find('p, hr, h2').css('opacity', 1);
-    }
-  });
+$(window).on('resize scroll', function () {
+	$('.frame_content').each(function () {
+		if ($(this).isInViewport()) {
+			$(this).find('p, hr, h2').css('opacity', 0);
+		} else {
+			$(this).find('p, hr, h2').css('opacity', 1);
+		}
+	});
 });
 
 // Get vertical height from window
@@ -39,6 +39,27 @@ window.addEventListener('resize', () => {
 });
 
 // Media Query function
+var portrait;
+var mql = window.matchMedia("(orientation: portrait)");
 
-var orientation = window.screen.orientation;
-console.log(orientation);
+// Test for sceen in portrait orientation
+if (mql.matches) {
+	portrait = true;
+} else {
+	portrait = false;
+}
+
+// Image swapping on orientation
+mql.addListener(function (m) {
+	var windowTop = jQuery(window).scrollTop();
+
+	if (m.matches) {
+		portrait = true;
+		console.log('portrait');
+		
+	} else {
+		portrait = false;
+		console.log('horizontal');
+		}
+	}
+);
