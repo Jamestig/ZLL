@@ -45,7 +45,11 @@ a {
 html {
   font-size: 16px; }
 
-@media screen and (max-width: 330px) {
+@media screen and (max-width: 400px) {
+  html {
+    font-size: 14px; } }
+
+@media screen and (max-width: 900px) and (orientation: landscape) {
   html {
     font-size: 14px; } }
 
@@ -71,7 +75,7 @@ body {
   scroll-snap-type: y mandatory;
   overflow-y: auto;
   overflow-x: hidden;
-  scroll-padding-top: 40px; }
+  scroll-padding-top: 50px; }
 
 /*// HEADER //*/
 .header {
@@ -89,14 +93,29 @@ body {
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=0);
   /* IE6-9 */ }
-  .header_title {
-    height: 40px;
-    padding-left: 5vw;
-    padding-top: 8px;
-    margin: 0;
-    font-size: 1.6em; }
-    .header_title a {
-      color: var(--brand-red); }
+  .header .header_container {
+    display: flex;
+    flex-flow: row;
+    align-items: flex-end;
+    height: 50px;
+    padding-bottom: 6px; }
+    .header .header_container .header_title {
+      flex: 0 0 70%;
+      padding-left: 5vw;
+      margin: 0;
+      font-size: 1.6em; }
+      .header .header_container .header_title a {
+        color: var(--brand-red); }
+    .header .header_container .header_slogan {
+      flex: 0 0 30%;
+      font-size: .9em;
+      margin: 0; }
+      .header .header_container .header_slogan a {
+        background: linear-gradient(to right, var(--brand-red) 0%, var(--brand-purple) 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent; }
+        .header .header_container .header_slogan a span:first-of-type {
+          font-size: .7em; }
   .header .hr {
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff2323+0,201470+100 */
     background: #ff2323;
@@ -113,52 +132,43 @@ body {
     margin-top: 0;
     margin-left: 0;
     height: 1px; }
-  .header_nav {
+  .header .header_nav {
     display: flex;
     flex-flow: row;
     justify-content: space-between;
     align-items: flex-end;
     margin: 0 4vw;
     font-size: .8em; }
-    .header_nav-site a {
-      color: var(--font-white); }
-    .header_nav ul li {
+    .header .header_nav ul li {
       display: inline; }
-      .header_nav ul li a {
-        padding: .5em; }
+      .header .header_nav ul li a {
+        padding: .5em;
+        color: var(--font-grey); }
 
 @media screen and (orientation: landscape) {
   .header {
-    height: 81px;
-    background: none; }
+    height: 81px; }
+    .header .header_container .header_title {
+      flex: 0 0 40%; }
+    .header .header_container .header_slogan {
+      font-size: 1.2em;
+      flex: 0 0 40%;
+      padding-left: 10px; }
     .header .hr {
       height: 1px; }
-    .header_title {
-      height: 40px;
-      background-color: rgba(0, 0, 0, 0.5); }
-    .header_nav {
-      margin-left: 9vw;
-      font-size: 1em; }
-      .header_nav ul li {
-        display: inline; }
-        .header_nav ul li a {
-          padding: .8em; } }
+    .header .header_nav ul li {
+      display: inline; }
+      .header .header_nav ul li a {
+        padding: .8em; } }
 
 @media screen and (min-width: 1024px) and (orientation: landscape) {
   .header {
-    height: 121px;
+    height: 200px;
     padding-top: 0; }
-    .header_title {
-      width: 100%;
-      align-self: flex-end;
-      margin: auto;
-      margin-bottom: 0; }
-    .header_nav {
+    .header .header_nav {
       justify-content: space-between;
       align-items: flex-end;
-      height: auto; }
-      .header_nav-site {
-        margin-left: 0; } }
+      height: auto; } }
 
 /*// BLOCKS - MOBILE //*/
 main {
@@ -195,31 +205,6 @@ img {
     .frame_container .frame_content p {
       font-size: .8em; }
 
-/*// MODIFIERS //*/
-.hr {
-  border-style: none;
-  height: 1px;
-  z-index: 8;
-  background-color: white;
-  margin-left: 5vw; }
-
-.hidden {
-  display: none !important;
-  visibility: hidden; }
-
-.visually-hidden {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px; }
-
-.invisible {
-  visibility: hidden; }
-
 /* Mobile - horizontal orientation */
 @media screen and (min-width: 450px) {
   body {
@@ -228,6 +213,7 @@ img {
     margin-top: 0px; }
   /*// BLOCKS - WIDE //*/
   .frame {
+    height: 100vh;
     /*// MODIFIERS - WIDE //*/ }
     .frame .frame_container {
       width: 100%; }
@@ -252,57 +238,95 @@ img {
       margin-left: 0; } }
 
 @media screen and (min-width: 768px) {
-  html {
-    font-size: 16px; }
   body {
-    scroll-padding-top: 60px; }
-  main {
-    margin-top: 60px; }
-  .header_title {
-    height: 60px;
-    padding-top: 20px;
+    scroll-padding-top: 0px; }
+  .header .header_container .header_title {
     padding-left: 8vw; }
-  .header_nav {
+  .header .header_container .header_slogan {
+    padding-left: 10px; }
+  .header .header_nav {
     margin-left: 10vw;
     margin-right: 8vw; }
   .frame {
-    height: 40vh; }
-    .frame_container .frame_content {
-      padding-bottom: 5vh; }
-      .frame_container .frame_content h2 {
-        position: sticky;
-        bottom: 30px;
+    height: 100vh; }
+    .frame .frame_container .frame_content {
+      padding-bottom: 2vh; }
+      .frame .frame_container .frame_content h2 {
         font-size: 1.2em;
-        padding-left: 8vw; }
-      .frame_container .frame_content p {
+        padding-left: 8vw;
+        position: sticky;
+        bottom: 30px; }
+      .frame .frame_container .frame_content p {
         padding-left: 8vw; } }
 
-@media screen and (min-width: 768px) and (orientation: landscape) {
+@media screen and (min-width: 768px) and (orientation: portrait) {
+  body {
+    scroll-padding-top: 50px; }
+  main {
+    margin-top: 50px; }
+  .header .header_container .header_title {
+    flex-basis: 40%; }
   .frame {
-    height: 70vh; } }
+    height: 40vh; } }
+
+@media screen and (min-width: 768px) and (min-aspect-ratio: 4 / 3) and (max-aspect-ratio: 16 / 9) {
+  .frame {
+    height: 70vh; }
+    .frame .frame_container .frame_content h2 {
+      position: sticky;
+      bottom: 30px; } }
 
 @media screen and (min-width: 1280px) and (orientation: landscape) {
   html {
     font-size: 20px; }
-  main {
-    margin-top: 0px; }
-  .header_title {
-    height: 60px;
-    padding-top: 20px;
-    padding-left: 15vw; }
-  .header_nav {
-    margin-left: 18vw;
-    margin-right: 15vw; }
+  .header .header_container {
+    height: 80px; }
+    .header .header_container .header_title {
+      flex-basis: 35%;
+      padding-top: 20px;
+      padding-left: 12vw; }
+    .header .header_container .header_slogan {
+      font-size: 1.5em; }
+  .header .header_nav {
+    margin-left: 17vw;
+    margin-right: 10vw;
+    font-size: .9em; }
   .frame {
     height: 90vh; }
-    .frame_container .frame_content {
-      padding-bottom: 10vh; }
-      .frame_container .frame_content h2 {
+    .frame .frame_container .frame_content {
+      padding-bottom: 10vh;
+      width: 35%; }
+      .frame .frame_container .frame_content h2 {
         position: sticky;
         bottom: 30px;
         font-size: 1.2em;
-        padding-left: 15vw; }
-      .frame_container .frame_content p {
-        padding-left: 15vw; } }
+        padding-left: 12vw; }
+      .frame .frame_container .frame_content p {
+        padding-left: 12vw; } }
+
+/*// MODIFIERS //*/
+.hr {
+  border-style: none;
+  height: 1px;
+  z-index: 8;
+  background-color: white;
+  margin-left: 5vw; }
+
+.hidden {
+  display: none !important;
+  visibility: hidden; }
+
+.visually-hidden {
+  border: 0;
+  clip: rect(0 0 0 0);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px; }
+
+.invisible {
+  visibility: hidden; }
 
 /*# sourceMappingURL=main.css.map */
