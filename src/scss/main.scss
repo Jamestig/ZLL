@@ -309,14 +309,11 @@ img {
 	visibility: hidden;
 }
 
-@media screen and (orientation: landscape) {
+/* Mobile - horizontal orientation */
 
-	/*// SCROLL SNAP //*/
+@media screen and (min-width: 450px) {
 
 	body {
-		scroll-snap-type: y mandatory;
-		overflow-y: auto;
-		overflow-x: hidden;
 		scroll-padding-top: 0px;
 	}
 
@@ -339,7 +336,6 @@ img {
 			img {
 				height: auto;
 				width: 100%;
-
 			}
 
 			.frame_content {
@@ -347,7 +343,7 @@ img {
 				display: flex;
 				flex-flow: column;
 				justify-content: flex-end;
-				width: 100%;
+				width: 40%;
 
 				h2 {
 					font-size: 1.2em;
@@ -365,135 +361,68 @@ img {
 			width: 100%;
 			margin-left: 0;
 		}
+	}
+}
 
-		/*// FRAME CLIPPING //*/
+// Tablet styling
 
-		/* Right side frames */
-		&:nth-child(even) {
-			.frame_container {
-				margin-right: 0;
-				margin-left: auto;
-				text-align: right;
-			}
+@media screen and (min-width: 768px) {
+
+	html {
+		font-size: 16px;
+	}
+
+	body {
+		scroll-padding-top: 60px;
+	}
+
+	main {
+		margin-top: 60px;
+	}
+
+	.header {
+		&_title {
+			height: 60px;
+			padding-top: 20px;
+			padding-left: 8vw;
 		}
 
-		/* Frame 1/6 */
-		&:nth-child(6n + 1) {
-			.frame_container {
-				.frame_content {
-					clip-path: polygon(0% 0%, 35% 0%, 45% 100%, 0% 100%);
+		&_nav {
+			margin-left: 10vw;
+			margin-right: 8vw;
+		}
+	}
 
-					h2 {
-						width: 45%;
-					}
+	.frame {
+		height: 40vh;
 
-					p {
-						width: 45%;
-					}
+		&_container {
+
+			.frame_content {
+				padding-bottom: 2vh;
+
+				h2 {
+					position: sticky;
+					bottom: 30px;
+					font-size: 1.2em;
+					padding-left: 8vw;
 				}
-			}
-		}
 
-		/* Frame 2/6 */
-		&:nth-child(6n + 2) {
-			.frame_container {
-				.frame_content {
-					clip-path: polygon(45% 0%, 100% 0%, 100% 100%, 55% 100%);
-
-					h2 {
-						width: 45%;
-						margin-right: 0;
-						margin-left: auto;
-					}
-
-					p {
-						width: 45%;
-						margin-right: 0;
-						margin-left: auto;
-					}
-				}
-			}
-		}
-
-		/* Frame 3/6 */
-		&:nth-child(6n + 3) {
-			.frame_container {
-				.frame_content {
-					clip-path: polygon(0% 0%, 55% 0%, 65% 100%, 0% 100%);
-
-					h2 {
-						width: 55%;
-					}
-
-					p {
-						width: 55%;
-					}
-				}
-			}
-		}
-
-		/* Frame 4/6 */
-		&:nth-child(6n + 4) {
-			.frame_container {
-				.frame_content {
-					clip-path: polygon(65% 0%, 100% 0%, 100% 100%, 55% 100%);
-
-					h2 {
-						width: 40%;
-						margin-right: 0;
-						margin-left: auto;
-					}
-
-					p {
-						width: 45%;
-						margin-right: 0;
-						margin-left: auto;
-					}
-				}
-			}
-		}
-
-		/* Frame 5/6 */
-		&:nth-child(6n + 5) {
-			.frame_container {
-				.frame_content {
-					clip-path: polygon(0% 0%, 55% 0%, 45% 100%, 0% 100%);
-
-					h2 {
-						width: 45%;
-					}
-
-					p {
-						width: 45%;
-					}
-				}
-			}
-		}
-
-		/* Frame 6/6 */
-		&:nth-child(6n + 6) {
-			.frame_container {
-				.frame_content {
-					clip-path: polygon(45% 0%, 100% 0%, 100% 100%, 35% 100%);
-
-					h2 {
-						width: 55%;
-						margin-right: 0;
-						margin-left: auto;
-					}
-
-					p {
-						width: 55%;
-						margin-right: 0;
-						margin-left: auto;
-					}
+				p {
+					padding-left: 8vw;
 				}
 			}
 		}
 	}
 }
 
-@media screen and (min-width: 1024px) and (orientation: landscape) {
+@media screen and (min-width: 768px) and (orientation: landscape) {
+	.frame {
+		height: 70vh;
+	}
+}
+
+@media screen and (min-width: 1280px) and (orientation: landscape) {
 
 	html {
 		font-size: 20px;
@@ -523,6 +452,7 @@ img {
 
 			.frame_content {
 				padding-bottom: 10vh;
+
 				h2 {
 					position: sticky;
 					bottom: 30px;
@@ -532,92 +462,6 @@ img {
 
 				p {
 					padding-left: 15vw;
-				}
-			}
-		}
-		&:nth-child(even) {
-			.frame_container {
-				.frame_content {
-					h2,
-					p {
-						padding-right: 15vw;
-						padding-left: 0;
-					}
-				}
-			}
-		}
-
-		&:nth-child(4n + 1) {
-			.frame_container {
-				.frame_content {
-					clip-path: polygon(0% 0%, 35% 0%, 50% 100%, 0% 100%);
-
-					h2 {
-						width: 45%;
-					}
-
-					p {
-						width: 45%;
-					}
-				}
-			}
-		}
-
-		/* Frame 2/6 */
-		&:nth-child(4n + 2) {
-			.frame_container {
-				.frame_content {
-					clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 65% 100%);
-
-					h2 {
-						width: 45%;
-						margin-right: 0;
-						margin-left: auto;
-					}
-
-					p {
-						width: 45%;
-						margin-right: 0;
-						margin-left: auto;
-					}
-				}
-			}
-		}
-
-		/* Frame 3/6 */
-		&:nth-child(4n + 3) {
-			.frame_container {
-				.frame_content {
-					clip-path: polygon(0% 0%, 65% 0%, 50% 100%, 0% 100%);
-
-					h2 {
-						width: 55%;
-					}
-
-					p {
-						width: 55%;
-					}
-				}
-			}
-		}
-
-		/* Frame 4/6 */
-		&:nth-child(4n + 4) {
-			.frame_container {
-				.frame_content {
-					clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 35% 100%);
-
-					h2 {
-						width: 40%;
-						margin-right: 0;
-						margin-left: auto;
-					}
-
-					p {
-						width: 45%;
-						margin-right: 0;
-						margin-left: auto;
-					}
 				}
 			}
 		}

@@ -220,26 +220,15 @@ img {
 .invisible {
   visibility: hidden; }
 
-@media screen and (orientation: landscape) {
-  /*// SCROLL SNAP //*/
+/* Mobile - horizontal orientation */
+@media screen and (min-width: 450px) {
   body {
-    scroll-snap-type: y mandatory;
-    overflow-y: auto;
-    overflow-x: hidden;
     scroll-padding-top: 0px; }
   main {
     margin-top: 0px; }
   /*// BLOCKS - WIDE //*/
   .frame {
-    /*// MODIFIERS - WIDE //*/
-    /*// FRAME CLIPPING //*/
-    /* Right side frames */
-    /* Frame 1/6 */
-    /* Frame 2/6 */
-    /* Frame 3/6 */
-    /* Frame 4/6 */
-    /* Frame 5/6 */
-    /* Frame 6/6 */ }
+    /*// MODIFIERS - WIDE //*/ }
     .frame .frame_container {
       width: 100%; }
       .frame .frame_container figure {
@@ -253,68 +242,46 @@ img {
         display: flex;
         flex-flow: column;
         justify-content: flex-end;
-        width: 100%; }
+        width: 40%; }
         .frame .frame_container .frame_content h2 {
           font-size: 1.2em; }
         .frame .frame_container .frame_content p {
           font-size: .9em; }
     .frame .hr {
       width: 100%;
-      margin-left: 0; }
-    .frame:nth-child(even) .frame_container {
-      margin-right: 0;
-      margin-left: auto;
-      text-align: right; }
-    .frame:nth-child(6n + 1) .frame_container .frame_content {
-      clip-path: polygon(0% 0%, 35% 0%, 45% 100%, 0% 100%); }
-      .frame:nth-child(6n + 1) .frame_container .frame_content h2 {
-        width: 45%; }
-      .frame:nth-child(6n + 1) .frame_container .frame_content p {
-        width: 45%; }
-    .frame:nth-child(6n + 2) .frame_container .frame_content {
-      clip-path: polygon(45% 0%, 100% 0%, 100% 100%, 55% 100%); }
-      .frame:nth-child(6n + 2) .frame_container .frame_content h2 {
-        width: 45%;
-        margin-right: 0;
-        margin-left: auto; }
-      .frame:nth-child(6n + 2) .frame_container .frame_content p {
-        width: 45%;
-        margin-right: 0;
-        margin-left: auto; }
-    .frame:nth-child(6n + 3) .frame_container .frame_content {
-      clip-path: polygon(0% 0%, 55% 0%, 65% 100%, 0% 100%); }
-      .frame:nth-child(6n + 3) .frame_container .frame_content h2 {
-        width: 55%; }
-      .frame:nth-child(6n + 3) .frame_container .frame_content p {
-        width: 55%; }
-    .frame:nth-child(6n + 4) .frame_container .frame_content {
-      clip-path: polygon(65% 0%, 100% 0%, 100% 100%, 55% 100%); }
-      .frame:nth-child(6n + 4) .frame_container .frame_content h2 {
-        width: 40%;
-        margin-right: 0;
-        margin-left: auto; }
-      .frame:nth-child(6n + 4) .frame_container .frame_content p {
-        width: 45%;
-        margin-right: 0;
-        margin-left: auto; }
-    .frame:nth-child(6n + 5) .frame_container .frame_content {
-      clip-path: polygon(0% 0%, 55% 0%, 45% 100%, 0% 100%); }
-      .frame:nth-child(6n + 5) .frame_container .frame_content h2 {
-        width: 45%; }
-      .frame:nth-child(6n + 5) .frame_container .frame_content p {
-        width: 45%; }
-    .frame:nth-child(6n + 6) .frame_container .frame_content {
-      clip-path: polygon(45% 0%, 100% 0%, 100% 100%, 35% 100%); }
-      .frame:nth-child(6n + 6) .frame_container .frame_content h2 {
-        width: 55%;
-        margin-right: 0;
-        margin-left: auto; }
-      .frame:nth-child(6n + 6) .frame_container .frame_content p {
-        width: 55%;
-        margin-right: 0;
-        margin-left: auto; } }
+      margin-left: 0; } }
 
-@media screen and (min-width: 1024px) and (orientation: landscape) {
+@media screen and (min-width: 768px) {
+  html {
+    font-size: 16px; }
+  body {
+    scroll-padding-top: 60px; }
+  main {
+    margin-top: 60px; }
+  .header_title {
+    height: 60px;
+    padding-top: 20px;
+    padding-left: 8vw; }
+  .header_nav {
+    margin-left: 10vw;
+    margin-right: 8vw; }
+  .frame {
+    height: 40vh; }
+    .frame_container .frame_content {
+      padding-bottom: 5vh; }
+      .frame_container .frame_content h2 {
+        position: sticky;
+        bottom: 30px;
+        font-size: 1.2em;
+        padding-left: 8vw; }
+      .frame_container .frame_content p {
+        padding-left: 8vw; } }
+
+@media screen and (min-width: 768px) and (orientation: landscape) {
+  .frame {
+    height: 70vh; } }
+
+@media screen and (min-width: 1280px) and (orientation: landscape) {
   html {
     font-size: 20px; }
   main {
@@ -327,10 +294,7 @@ img {
     margin-left: 18vw;
     margin-right: 15vw; }
   .frame {
-    height: 90vh;
-    /* Frame 2/6 */
-    /* Frame 3/6 */
-    /* Frame 4/6 */ }
+    height: 90vh; }
     .frame_container .frame_content {
       padding-bottom: 10vh; }
       .frame_container .frame_content h2 {
@@ -339,42 +303,6 @@ img {
         font-size: 1.2em;
         padding-left: 15vw; }
       .frame_container .frame_content p {
-        padding-left: 15vw; }
-    .frame:nth-child(even) .frame_container .frame_content h2,
-    .frame:nth-child(even) .frame_container .frame_content p {
-      padding-right: 15vw;
-      padding-left: 0; }
-    .frame:nth-child(4n + 1) .frame_container .frame_content {
-      clip-path: polygon(0% 0%, 35% 0%, 50% 100%, 0% 100%); }
-      .frame:nth-child(4n + 1) .frame_container .frame_content h2 {
-        width: 45%; }
-      .frame:nth-child(4n + 1) .frame_container .frame_content p {
-        width: 45%; }
-    .frame:nth-child(4n + 2) .frame_container .frame_content {
-      clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 65% 100%); }
-      .frame:nth-child(4n + 2) .frame_container .frame_content h2 {
-        width: 45%;
-        margin-right: 0;
-        margin-left: auto; }
-      .frame:nth-child(4n + 2) .frame_container .frame_content p {
-        width: 45%;
-        margin-right: 0;
-        margin-left: auto; }
-    .frame:nth-child(4n + 3) .frame_container .frame_content {
-      clip-path: polygon(0% 0%, 65% 0%, 50% 100%, 0% 100%); }
-      .frame:nth-child(4n + 3) .frame_container .frame_content h2 {
-        width: 55%; }
-      .frame:nth-child(4n + 3) .frame_container .frame_content p {
-        width: 55%; }
-    .frame:nth-child(4n + 4) .frame_container .frame_content {
-      clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 35% 100%); }
-      .frame:nth-child(4n + 4) .frame_container .frame_content h2 {
-        width: 40%;
-        margin-right: 0;
-        margin-left: auto; }
-      .frame:nth-child(4n + 4) .frame_container .frame_content p {
-        width: 45%;
-        margin-right: 0;
-        margin-left: auto; } }
+        padding-left: 15vw; } }
 
 /*# sourceMappingURL=main.css.map */
