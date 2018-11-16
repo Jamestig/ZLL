@@ -1,3 +1,13 @@
+/*// ZERO LIVES LEFT //*/
+
+/* Breakpoint 
+- Mobile portrait >= 0px
+- Mobile landscape > 450px
+- Tablet portrait > 450px portrait
+- Tablet Landscape > 900px min aspect 1/1
+- Widescreen > 1024px min aspect 16/10
+*/
+
 /*// RESET //*/
 
 * {
@@ -43,24 +53,42 @@ a {
 	--brand-red: #bf3e3c;
 	--brand-purple: #6e4b74;
 	--brand-grey: #424242;
-	--tag-blue: blue;
+	--brand-blue: #51667d;
 	--tag-green: green;
 	--tag-orange: orange;
 	--tag-grey: lightgrey;
 }
 
 @mixin redtopurple {
-	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#ff2323+0,201470+100 */
-	background: rgb(255, 35, 35);
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#bf3e3c+0,6e4b74+100 */
+	background: rgb(191, 62, 60);
 	/* Old browsers */
-	background: -moz-linear-gradient(left, rgba(255, 35, 35, 1) 0%, rgba(32, 20, 112, 1) 100%);
+	background: -moz-linear-gradient(left, rgba(191, 62, 60, 1) 0%, rgba(110, 75, 116, 1) 100%);
 	/* FF3.6-15 */
-	background: -webkit-linear-gradient(left, rgba(255, 35, 35, 1) 0%, rgba(32, 20, 112, 1) 100%);
+	background: -webkit-linear-gradient(left, rgba(191, 62, 60, 1) 0%, rgba(110, 75, 116, 1) 100%);
 	/* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to right, rgba(255, 35, 35, 1) 0%, rgba(32, 20, 112, 1) 100%);
+	background: linear-gradient(to right, rgba(191, 62, 60, 1) 0%, rgba(110, 75, 116, 1) 100%);
 	/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ff2323', endColorstr='#201470', GradientType=1);
+	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#bf3e3c', endColorstr='#6e4b74', GradientType=1);
 	/* IE6-9 */
+}
+
+@mixin paddingLeft($pl) {
+	h2 {
+		padding-left: $pl;
+	}
+
+	h3 {
+		padding-left: $pl;
+	}
+
+	.frame_tag {
+		padding-left: $pl;
+	}
+
+	p {
+		padding-left: $pl;
+	}
 }
 
 /*// GLOBAL TYPOGRAPHY //*/
@@ -81,9 +109,11 @@ html {
 	}
 }
 
-p {
-	color: white;
-	font-family: 'Open Sans', sans-serif;
+@media screen and (min-width: 1280px) {
+
+	html {
+		font-size: 20px;
+	}
 }
 
 /*// Font styling //*/
@@ -101,13 +131,13 @@ h6 {
 	font-weight: normal;
 }
 
-/*// SCROLL SNAP //*/
+p {
+	color: white;
+	font-family: 'Open Sans', sans-serif;
+}
 
-body {
-	scroll-snap-type: y mandatory;
-	overflow-y: auto;
-	overflow-x: hidden;
-	scroll-padding-top: 50px;
+date {
+	color: white;
 }
 
 /*// HEADER //*/
@@ -118,28 +148,38 @@ body {
 	z-index: 10;
 	top: 0;
 	width: 100%;
-	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.5+0,0+100 */
-	background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
-	/* FF3.6-15 */
-	background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
-	/* Chrome10-25,Safari5.1-6 */
-	background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
-	/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-	filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=0);
-	/* IE6-9 */
+
+	&::after {
+		content: '';
+		z-index: -1;
+		position: absolute;
+		top: 0;
+		width: 100%;
+		height: 30vh;
+		/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.5+0,0+100 */
+		background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
+		/* FF3.6-15 */
+		background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
+		/* Chrome10-25,Safari5.1-6 */
+		background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
+		/* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#80000000', endColorstr='#00000000', GradientType=0);
+		/* IE6-9 */
+	}
 
 	.header_container {
 		display: flex;
 		flex-flow: row;
 		align-items: flex-end;
-		height: 50px;
-		padding-bottom: 6px;
+		height: 40px;
 
 		.header_title {
-			flex: 0 0 70%;
+			position: relative;
+			bottom: -5px;
+			flex: 0 0 55%;
 			padding-left: 5vw;
 			margin: 0;
-			font-size: 1.6em;
+			font-size: 1.3em;
 
 			a {
 				color: var(--brand-red);
@@ -147,17 +187,22 @@ body {
 		}
 
 		.header_slogan {
-			flex: 0 0 30%;
-			font-size: .9em;
+			position: relative;
+			bottom: -20px;
+			flex: 0 0 45%;
+			font-size: 1em;
 			margin: 0;
+			padding-right: 5vw;
+			text-align: right;
+			filter: brightness(1.2);
 
 			a {
-				background: linear-gradient(to right, var(--brand-red) 0%, var(--brand-purple) 100%);
+				background: linear-gradient(to right, var(--brand-purple) 0%, var(--brand-red) 100%);
 				-webkit-background-clip: text;
 				-webkit-text-fill-color: transparent;
 
 				span:first-of-type {
-					font-size: .7em;
+					font-size: .8em;
 				}
 			}
 		}
@@ -169,6 +214,7 @@ body {
 		margin-top: 0;
 		margin-left: 0;
 		height: 1px;
+		margin-bottom: 6px;
 	}
 
 	.header_nav {
@@ -176,7 +222,7 @@ body {
 		flex-flow: row;
 		justify-content: space-between;
 		align-items: flex-end;
-		margin: 0 4vw;
+		padding: 0 4vw;
 		font-size: .8em;
 
 		ul {
@@ -186,74 +232,24 @@ body {
 
 				a {
 					padding: .5em;
-					color: var(--font-grey);
+					color: var(--font-light);
 				}
 			}
 		}
-	}
-}
 
-@media screen and (orientation: landscape) {
-
-	.header {
-		height: 81px;
-
-		.header_container {
-
-			.header_title {
-				flex: 0 0 40%;
-			}
-
-			.header_slogan {
-				font-size: 1.2em;
-				flex: 0 0 40%;
-				padding-left: 10px;
-			}
-		}
-
-		.hr {
-			height: 1px;
-		}
-
-		.header_nav {
-
-			ul {
-
-				li {
-					display: inline;
-
-					a {
-						padding: .8em;
-					}
-				}
-			}
+		&-info {
+			display: none;
 		}
 	}
 }
 
-@media screen and (min-width: 1024px) and (orientation: landscape) {
+/* MAIN CONTENT */
 
-	.header {
-		height: 200px;
-		padding-top: 0;
-
-		.header_container {
-
-			.header_title {}
-		}
-
-		.header_nav {
-			justify-content: space-between;
-			align-items: flex-end;
-			height: auto;
-		}
-	}
-}
-
-/*// BLOCKS - MOBILE //*/
-
-main {
-	margin-top: 30px;
+body {
+	scroll-snap-type: y mandatory;
+	overflow-y: auto;
+	overflow-x: hidden;
+	scroll-padding-top: 0px;
 }
 
 img {
@@ -266,35 +262,63 @@ img {
 	position: relative;
 	display: flex;
 	flex-flow: row;
-}
 
-/*// ELEMENTS - MOBILE //*/
+	.frame_container {
+		position: relative;
+		display: flex;
+		flex-flow: column;
+		justify-content: flex-end;
+		height: 100%;
 
-.frame_container {
-	position: relative;
-	display: flex;
-	flex-flow: column;
-	justify-content: flex-end;
-	height: 100%;
+		.frame_content {
+			position: absolute;
+			background-color: rgba(0, 0, 0, 0.6);
+			padding-bottom: 1vh;
 
-	.frame_content {
-		position: absolute;
-		background-color: rgba(0, 0, 0, 0.6);
-		padding-bottom: 1vh;
+			h2,
+			h3,
+			p {
+				padding: 0 5vw;
+				transition: opacity .1s linear;
+			}
 
-		h2,
-		p {
-			padding: 0 5vw;
-			transition: opacity .1s linear;
-		}
+			h2 {
+				color: var(--font-light);
+				font-size: 1em;
+				margin-bottom: .2em;
+			}
 
-		h2 {
-			opacity: .8;
-			font-size: 1em;
-		}
+			h3 {
+				color: var(--font-light);
+				font-size: .9em;
+				margin-top: .2em;
+			}
 
-		p {
-			font-size: .8em;
+			p {
+				font-size: .8em;
+			}
+
+			.frame_tag {
+				padding-left: 5vw;
+				margin-top: -1px;
+
+				span {
+					a {
+						font-size: .8em;
+						display: inline-block;
+						padding: .3em;
+						border: 1px solid var(--font-light);
+						text-transform: uppercase;
+						color: var(--font-light);
+					}
+				}
+
+				date {
+					color: var(--font-light);
+					padding-left: 6px;
+					font-size: .8em;
+				}
+			}
 		}
 	}
 }
@@ -303,15 +327,51 @@ img {
 
 @media screen and (min-width: 450px) {
 
-	body {
-		scroll-padding-top: 0px;
-	}
+	.header {
 
-	main {
-		margin-top: 0px;
-	}
+		.header_container {
 
-	/*// BLOCKS - WIDE //*/
+			.header_title {
+				flex: 0 0 40%;
+				padding-left: 8vw;
+			}
+
+			.header_slogan {
+				font-size: 1.2em;
+				flex: 0 0 40%;
+				padding-left: 10px;
+				text-align: left;
+				bottom: -5px;
+			}
+		}
+
+		.hr {
+			height: 1px;
+		}
+
+		.header_nav {
+			padding-left: 8vw;
+
+			ul {
+
+				li {
+					display: inline;
+
+					a {
+						padding: .8em;
+					}
+				}
+			}
+
+			&-info {
+				display: block;
+
+				a {
+					color: var(--font-grey) !important;
+				}
+			}
+		}
+	}
 
 	.frame {
 		height: 100vh;
@@ -335,6 +395,7 @@ img {
 				flex-flow: column;
 				justify-content: flex-end;
 				width: 40%;
+				padding-bottom: 4vh;
 
 				h2 {
 					font-size: 1.2em;
@@ -343,99 +404,54 @@ img {
 				p {
 					font-size: .9em;
 				}
+
+				@include paddingLeft(8vw);
 			}
-		}
-
-		/*// MODIFIERS - WIDE //*/
-
-		.hr {
-			width: 100%;
-			margin-left: 0;
 		}
 	}
 }
 
-// Tablet styling
+// Tablet in Portrait
 
-@media screen and (min-width: 768px) {
-
-	body {
-		scroll-padding-top: 0px;
-	}
-
-	.header {
-		.header_container {
-			.header_title {
-				padding-left: 8vw;
-			}
-
-			.header_slogan {
-				padding-left: 10px;
-			}
-		}
-
-		.header_nav {
-			margin-left: 10vw;
-			margin-right: 8vw;
-		}
-	}
+@media screen and (min-width: 450px) and (orientation: portrait) {
 
 	.frame {
-		height: 100vh;
+		height: 45vh;
 
 		.frame_container {
+			img {
+				height: 100%;
+				width: auto;
+			}
 
 			.frame_content {
-				padding-bottom: 2vh;
+				padding-bottom: 4vh;
 
 				h2 {
-					font-size: 1.2em;
-					padding-left: 8vw;
 					position: sticky;
-					bottom: 30px;
-				}
-
-				p {
-					padding-left: 8vw;
+					bottom: 50px;
 				}
 			}
 		}
-	}
-}
-
-// Tablet in portrait
-
-@media screen and (min-width: 768px) and (orientation: portrait) {
-
-	body {
-		scroll-padding-top: 50px;
-	}
-
-	main {
-		margin-top: 50px;
-	}
-
-	.header {
-		.header_container {
-			.header_title {
-				flex-basis: 40%;
-			}
-		}
-	}
-
-	.frame {
-		height: 40vh;
 	}
 }
 
 // Tablet in Landscape
 
-@media screen and (min-width: 768px) and (min-aspect-ratio: 4/3) and (max-aspect-ratio: 16/9) {
+@media screen and (min-width: 900px) and (orientation: landscape) {
+
 	.frame {
-		height: 70vh;
+		height: 80vh;
 
 		.frame_container {
+			img {
+				height: 100%;
+				width: auto;
+			}
+
 			.frame_content {
+				padding-bottom: 6vh;
+
 				h2 {
 					position: sticky;
 					bottom: 30px;
@@ -445,7 +461,7 @@ img {
 	}
 }
 
-@media screen and (min-width: 1280px) and (orientation: landscape) {
+@media screen and (min-width: 1280px) and (min-aspect-ratio: 16/10) {
 
 	html {
 		font-size: 20px;
@@ -454,20 +470,24 @@ img {
 	.header {
 		.header_container {
 			height: 80px;
+
 			.header_title {
 				flex-basis: 35%;
-				padding-top: 20px;
 				padding-left: 12vw;
+				bottom: -7px;
 			}
+
 			.header_slogan {
-				font-size: 1.5em;
+				bottom: -6px;
 			}
 		}
 
+		.hr {
+			margin-bottom: 10px;
+		}
 
 		.header_nav {
-			margin-left: 17vw;
-			margin-right: 10vw;
+			padding-left: 13vw;
 			font-size: .9em;
 		}
 	}
@@ -476,19 +496,28 @@ img {
 		height: 90vh;
 
 		.frame_container {
+			img {
+				width: 100%;
+				height: auto;
+			}
 
 			.frame_content {
 				padding-bottom: 10vh;
 				width: 35%;
 
 				h2 {
-					position: sticky;
-					bottom: 30px;
-					font-size: 1.2em;
+					padding-left: 12vw;
+				}
+
+				h3 {
 					padding-left: 12vw;
 				}
 
 				p {
+					padding-left: 12vw;
+				}
+
+				.frame_tag {
 					padding-left: 12vw;
 				}
 			}
@@ -501,9 +530,10 @@ img {
 .hr {
 	border-style: none;
 	height: 1px;
+	width: 100%;
 	z-index: 8;
 	background-color: white;
-	margin-left: 5vw;
+	margin-bottom: 0;
 }
 
 .hidden {
@@ -524,4 +554,23 @@ img {
 
 .invisible {
 	visibility: hidden;
+}
+
+.frame_tag-ga span a {
+	background-color: var(--brand-purple);
+}
+
+.frame_tag-ar span a {
+	background-color: var(--brand-red);
+}
+
+.frame_tag-id span a {
+	background-color: var(--brand-blue);
+}
+
+/*// FOOTER //*/
+
+.footer {
+	background-color: var(--brand-grey);
+	height: 50vh;
 }

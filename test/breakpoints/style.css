@@ -1,0 +1,55 @@
+* {
+	margin: 0;
+}
+
+section {
+	height: 50vh;
+	width: 100%;
+	margin: 0;
+}
+
+.sec1 {
+	background-color: lightblue;
+}
+.sec2 {
+	background-color: lightcoral;
+}
+.sec3 {
+	background-color: lightgoldenrodyellow;
+}
+.sec4 {
+	background-color: lightpink;
+}
+.sec5 {
+	background-color: lightsalmon;
+}
+
+@media screen and (min-width: 450px) {
+	section {
+		height: 100vh;
+	}
+}
+
+@media screen and (min-width: 450px) and (orientation: portrait) {
+	section {
+		height: 40vh;
+	}
+}
+
+@media screen and (max-width: 899px) and (min-aspect-ratio: 1/1) {
+	section {
+		background-color: red !important;
+	}
+}
+
+@media screen and (min-width: 900px) and (min-aspect-ratio: 1/1) {
+	section {
+		height: 60vh;
+	}
+}
+
+@media screen and (min-width: 1024px) and (min-aspect-ratio: 16/10) {
+	section {
+		height: 80vh;
+	}
+}
