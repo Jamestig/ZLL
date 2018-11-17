@@ -5,21 +5,21 @@ $.fn.isInViewport = function () {
 	var elementBottom = elementTop + $(this).outerHeight();
 
 	var viewportTop = $(window).scrollTop();
-	var viewportBottom = viewportTop + 100;
+	var viewportBottom = viewportTop + 70;
 
 	return elementBottom > viewportTop && elementTop < viewportBottom;
 };
 
 $(window).on('resize scroll', function () {
-	$('.frame_content').each(function () {
+	$('.hideAboveHeader').each(function () {
 		if ($(this).isInViewport()) {
-			$(this).find('p, hr, h2').css('opacity', 0);
+			$(this).css('opacity', 0);
 		} else {
-			$(this).find('p, hr, h2').css('opacity', 1);
+			$(this).css('opacity', 1);
 		}
 	});
 });
-
+/*
 // Get vertical height from window
 
 let vh = window.innerHeight * 0.01;
@@ -63,3 +63,4 @@ mql.addListener(function (m) {
 		}
 	}
 );
+*/

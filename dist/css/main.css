@@ -53,11 +53,7 @@ a {
 html {
   font-size: 16px; }
 
-@media screen and (max-width: 400px) {
-  html {
-    font-size: 14px; } }
-
-@media screen and (max-width: 900px) and (orientation: landscape) {
+@media screen and (max-width: 900px) {
   html {
     font-size: 14px; } }
 
@@ -98,7 +94,7 @@ date {
     position: absolute;
     top: 0;
     width: 100%;
-    height: 30vh;
+    height: 20vh;
     /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.5+0,0+100 */
     background: -moz-linear-gradient(top, rgba(0, 0, 0, 0.7) 0%, rgba(0, 0, 0, 0) 100%);
     /* FF3.6-15 */
@@ -177,7 +173,9 @@ body {
   scroll-padding-top: 0px; }
 
 img {
-  width: 100%; }
+  width: 100%;
+  height: auto;
+  vertical-align: middle; }
 
 .frame {
   transition: opacity 2s ease-in-out;
@@ -191,19 +189,31 @@ img {
     flex-flow: column;
     justify-content: flex-end;
     height: 100%; }
+    .frame .frame_container figure {
+      width: 100%;
+      overflow: hidden; }
     .frame .frame_container .frame_content {
       position: absolute;
-      background-color: rgba(0, 0, 0, 0.6);
-      padding-bottom: 1vh; }
+      display: flex;
+      flex-flow: column;
+      justify-content: flex-end;
+      height: 100%; }
+      .frame .frame_container .frame_content .frame_content-bottom {
+        background: rgba(0, 0, 0, 0.5); }
       .frame .frame_container .frame_content h2,
       .frame .frame_container .frame_content h3,
       .frame .frame_container .frame_content p {
         padding: 0 5vw;
         transition: opacity .1s linear; }
       .frame .frame_container .frame_content h2 {
+        background: rgba(0, 0, 0, 0.5);
         color: var(--font-light);
         font-size: 1em;
-        margin-bottom: .2em; }
+        margin-bottom: 0;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        position: sticky;
+        bottom: 0px; }
       .frame .frame_container .frame_content h3 {
         color: var(--font-light);
         font-size: .9em;
@@ -225,8 +235,18 @@ img {
           padding-left: 6px;
           font-size: .8em; }
 
+.sidebar {
+  display: none; }
+
 /* Mobile - horizontal orientation */
 @media screen and (min-width: 450px) {
+  body {
+    scroll-snap-type: y mandatory;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scroll-padding-top: 0px; }
+  main {
+    margin-top: 0; }
   .header .header_container .header_title {
     flex: 0 0 40%;
     padding-left: 8vw; }
@@ -249,24 +269,35 @@ img {
       .header .header_nav-info a {
         color: var(--font-grey) !important; }
   .frame {
-    height: 100vh; }
+    scroll-snap-type: mandatory; }
     .frame .frame_container {
       width: 100%; }
       .frame .frame_container figure {
-        height: calc(var(--vh, 1vh) * 100);
-        overflow: hidden; }
-      .frame .frame_container img {
-        height: auto;
-        width: 100%; }
+        height: 100vh; }
+        .frame .frame_container figure img {
+          height: auto;
+          width: 100%; }
       .frame .frame_container .frame_content {
         height: 100%;
         display: flex;
         flex-flow: column;
         justify-content: flex-end;
         width: 40%;
-        padding-bottom: 4vh; }
+        padding-bottom: 4vh;
+        /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0+0,0.45+50,0.7+100 */
+        background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.45) 50%, rgba(0, 0, 0, 0.7) 100%);
+        /* FF3.6-15 */
+        background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.45) 50%, rgba(0, 0, 0, 0.7) 100%);
+        /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.45) 50%, rgba(0, 0, 0, 0.7) 100%);
+        /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00000000', endColorstr='#b3000000', GradientType=0);
+        /* IE6-9 */ }
+        .frame .frame_container .frame_content .frame_content-bottom {
+          background: none; }
         .frame .frame_container .frame_content h2 {
-          font-size: 1.2em; }
+          font-size: 1.2em;
+          background: none; }
         .frame .frame_container .frame_content p {
           font-size: .9em; }
         .frame .frame_container .frame_content h2 {
@@ -276,31 +307,59 @@ img {
         .frame .frame_container .frame_content .frame_tag {
           padding-left: 8vw; }
         .frame .frame_container .frame_content p {
-          padding-left: 8vw; } }
+          padding-left: 8vw; }
+  .latest {
+    position: relative; }
+    .latest .sidebar {
+      display: block;
+      position: absolute;
+      top: 0;
+      right: 0;
+      z-index: 1;
+      width: 20%;
+      height: 100%;
+      /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,000000+100&0.2+0,0.7+100 */
+      background: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
+      /* FF3.6-15 */
+      background: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
+      /* Chrome10-25,Safari5.1-6 */
+      background: linear-gradient(to right, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
+      /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#33000000', endColorstr='#b3000000', GradientType=1);
+      /* IE6-9 */ }
+      .latest .sidebar .sidebar_intro {
+        padding: 10%; }
+      .latest .sidebar img {
+        width: 100%;
+        padding: 10%; } }
 
 @media screen and (min-width: 450px) and (orientation: portrait) {
-  .frame {
-    height: 45vh; }
-    .frame .frame_container img {
-      height: 100%;
-      width: auto; }
-    .frame .frame_container .frame_content {
-      padding-bottom: 4vh; }
-      .frame .frame_container .frame_content h2 {
-        position: sticky;
-        bottom: 50px; } }
+  .header .header_container {
+    height: 50px; }
+  .frame .frame_container figure {
+    height: auto; }
+    .frame .frame_container figure img {
+      width: 100%;
+      height: auto; }
+  .frame .frame_container .frame_content {
+    padding-bottom: 2vh; }
+    .frame .frame_container .frame_content h2 {
+      position: sticky;
+      bottom: 50px; } }
 
 @media screen and (min-width: 900px) and (orientation: landscape) {
-  .frame {
-    height: 80vh; }
-    .frame .frame_container img {
-      height: 100%;
-      width: auto; }
-    .frame .frame_container .frame_content {
-      padding-bottom: 6vh; }
-      .frame .frame_container .frame_content h2 {
-        position: sticky;
-        bottom: 30px; } }
+  .header .header_container {
+    height: 60px; }
+  .frame .frame_container figure {
+    height: auto; }
+    .frame .frame_container figure img {
+      width: 100%;
+      height: auto; }
+  .frame .frame_container .frame_content {
+    padding-bottom: 6vh; }
+    .frame .frame_container .frame_content h2 {
+      position: sticky;
+      bottom: 30px; } }
 
 @media screen and (min-width: 1280px) and (min-aspect-ratio: 16 / 10) {
   html {
@@ -318,22 +377,17 @@ img {
   .header .header_nav {
     padding-left: 13vw;
     font-size: .9em; }
-  .frame {
-    height: 90vh; }
-    .frame .frame_container img {
-      width: 100%;
-      height: auto; }
-    .frame .frame_container .frame_content {
-      padding-bottom: 10vh;
-      width: 35%; }
-      .frame .frame_container .frame_content h2 {
-        padding-left: 12vw; }
-      .frame .frame_container .frame_content h3 {
-        padding-left: 12vw; }
-      .frame .frame_container .frame_content p {
-        padding-left: 12vw; }
-      .frame .frame_container .frame_content .frame_tag {
-        padding-left: 12vw; } }
+  .frame .frame_container .frame_content {
+    padding-bottom: 10vh;
+    width: 35%; }
+    .frame .frame_container .frame_content h2 {
+      padding-left: 12vw; }
+    .frame .frame_container .frame_content h3 {
+      padding-left: 12vw; }
+    .frame .frame_container .frame_content p {
+      padding-left: 12vw; }
+    .frame .frame_container .frame_content .frame_tag {
+      padding-left: 12vw; } }
 
 /*// MODIFIERS //*/
 .hr {
